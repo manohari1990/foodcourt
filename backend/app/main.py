@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from database import engine
 from routers.stalls import router as stalls_router
 from routers.menus import router as menus_router
+from routers.orders import router as order_router
+
 app = FastAPI()
 
 ###############################
@@ -22,7 +24,7 @@ app.include_router(
 )
 
 app.include_router(
-    menus_router,
+    order_router,
     prefix="/orders",
     tags=["Orders"]
 )
