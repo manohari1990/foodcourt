@@ -5,6 +5,7 @@ from decimal import Decimal
 from datetime import datetime
 from schema.common import PaginationMeta
 from constants import PaymentStatus, OrderStatus
+from schema.order_item import OrderItemCreate
 
 class OrderBase(BaseModel):
     
@@ -16,6 +17,7 @@ class OrderBase(BaseModel):
     estimated_time: Optional[int] = None
 
 class OrderCreate(OrderBase):
+    items: List[OrderItemCreate]
     pass
 
 class OrderUpdate(BaseModel):
