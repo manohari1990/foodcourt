@@ -35,8 +35,11 @@ create table menu (
 )
 
 
-create type order_status as ENUM ('Order Placed', 'Preparing', 'Delay', 'Delivered');
-create type pay_status as ENUM ('Processing', 'Success', 'Failed');
+-- create type order_status as ENUM ('Order Placed', 'Preparing', 'Delay', 'Delivered');
+-- create type pay_status as ENUM ('Processing', 'Success', 'Failed');
+
+create type order_status as ENUM ('PLACED', 'PREPARING', 'READY', 'COMPLETED', 'CANCELLED'); 
+create type pay_status as ENUM ('PENDING', 'SUCCESS', 'FAILED');
 create table orders(
 	id uuid primary key,
 	table_number int not null,

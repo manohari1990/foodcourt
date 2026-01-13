@@ -1,5 +1,5 @@
 from pydantic import BaseModel, ConfigDict
-from sqlalchemy.dialects.postgresql import UUID
+from uuid import UUID
 from typing import Optional, List
 from decimal import Decimal
 from datetime import datetime
@@ -12,6 +12,7 @@ class OrderBase(BaseModel):
     stall_id: UUID
     order_status: OrderStatus
     payment_status: PaymentStatus
+    total_payment: Decimal
     estimated_time: Optional[int] = None
 
 class OrderCreate(OrderBase):
@@ -23,7 +24,7 @@ class OrderUpdate(BaseModel):
     stall_id: Optional[UUID] = None
     order_status: Optional[OrderStatus] = None
     payment_status: Optional[PaymentStatus] = None
-    total_payment: Optional[Decimal] = None
+    # total_payment: Optional[Decimal] = None
     estimated_time: Optional[int] = None
     
 class OrderResponse(OrderBase):
