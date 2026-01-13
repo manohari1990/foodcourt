@@ -24,6 +24,7 @@ class Stall(Base):
     created_at = Column(DateTime, server_default=func.now())
     updated_at = Column(DateTime, onupdate=func.now())
     
+    order_ref = relationship('Order', back_populates='stall')
     menu_items = relationship("Menu", back_populates="stall", cascade="all, delete-orphan")
 
     

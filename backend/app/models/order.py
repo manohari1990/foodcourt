@@ -17,7 +17,8 @@ class Order(Base):
     total_payment = Column(Numeric(10,2), nullable=False)
     payment_status = Column(Enum(PaymentStatus), nullable=False)
     created_at = Column(DateTime, server_default=func.now())
-    updated_at=Column(DateTime, server_onupdate=func.now())
+    updated_at=Column(DateTime, onupdate=func.now())
     
     stall = relationship('Stall', back_populates='order_ref')
+    items = relationship('OrderItem', back_populates='order', cascade='all, delete-orphan')
     

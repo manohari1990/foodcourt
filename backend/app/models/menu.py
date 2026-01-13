@@ -23,3 +23,4 @@ class Menu(Base):
     updated_at = Column(DateTime, onupdate=func.now())
     stall = relationship("Stall", back_populates="menu_items")
                                     # relationship(Model name, Object name which is defined in Stall Model)
+    order_items = relationship("OrderItem", back_populates="menu_item")
