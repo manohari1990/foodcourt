@@ -3,9 +3,18 @@ from database import engine
 from routers.stalls import router as stalls_router
 from routers.menus import router as menus_router
 from routers.orders import router as order_router
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
 ###############################
 ### Remember This Forever ###
 # Schemas validate data

@@ -8,7 +8,7 @@ from http import HTTPStatus
 
 router = APIRouter()
 
-@router.get('/', response_model=ListStallResponse)
+@router.get('', response_model=ListStallResponse)
 def list_stall(
     limit: int = Query(10, ge=1, le=100),
     offset:int = Query(0, ge=0),
@@ -35,7 +35,7 @@ def list_stall(
         }
     }
     
-@router.post('/', response_model=UpsertStallResponse)
+@router.post('', response_model=UpsertStallResponse)
 def create_stall(
     stall:StallCreate,
     db:Session = Depends(get_db)
