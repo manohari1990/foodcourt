@@ -1,5 +1,9 @@
 import {apiClient, apiAxiosClient} from './apiClient'
 
+
+// export async function getStalls (){
+//     const result = await apiClient("/stalls", 'GET')
+// }
 /**
  * Axios handles HTTP communication such as headers, authentication, and errors, 
  * while React Query manages server state including caching, synchronization, and background updates. 
@@ -9,11 +13,10 @@ import {apiClient, apiAxiosClient} from './apiClient'
 
 
 export async function getStalls ({queryKey}:any){
-    // const result = await apiClient("/stalls", 'GET')
-    const [_key, offset] = queryKey
+    const [_key, page, LIMIT] = queryKey
+    const offset = (page-1)*LIMIT
     try{
-        const result = await apiAxiosClient.get(`/stalls?limit=1&offset=${offset-1}`) // ?limit=10&offset=0
-        console.log(result)
+        const result = await apiAxiosClient.get(`/stalls?limit=${LIMIT}&offset=${offset}`) // ?limit=10&offset=0
         return result.data
     }catch(error){
         console.error('Error', error)

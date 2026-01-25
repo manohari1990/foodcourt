@@ -1,5 +1,6 @@
 import { Star, MapPin, Clock } from "lucide-react";
 import { Card, CardContent } from "../components/ui/card";
+import { useNavigate } from "react-router-dom";
 import { Badge } from "../components/ui/badge";
 import { useState } from "react";
 import { Button } from "./ui/button";
@@ -25,9 +26,16 @@ interface FoodStallCardProps {
   stall: FoodStall;
 }
 
-const FoodStallCard = ({ stall }: FoodStallCardProps) => {
+const FoodStallCard = ({
+  stall,
+}: FoodStallCardProps) => {
 
   const [isOpen, setIsOpen] = useState(true)
+
+  const navigate = useNavigate()
+  const onMenuClick = (stallId:string) => {
+    navigate(`/menu/${stallId}`)
+  }
 
   return (
     <div className="group overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border-0 shadow-sm" >
@@ -74,17 +82,6 @@ const FoodStallCard = ({ stall }: FoodStallCardProps) => {
                   {stall.stall_type}
                 </Badge>
               </div>
-              {/* <div className="text-right shrink-0">
-                <div className="flex items-center gap-1 text-rating">
-                  <Star className="w-4 h-4 fill-current" />
-                  <span className="font-semibold text-foreground">
-                    {stall.rating.toFixed(1)}
-                  </span>
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  {stall.reviewCount} reviews
-                </p>
-              </div> */}
             </div>
 
             <div className="mt-4 space-y-2">
@@ -97,29 +94,19 @@ const FoodStallCard = ({ stall }: FoodStallCardProps) => {
                 <span>{stall.open_at} - {stall.close_at}</span>
               </div>
             </div>
-
-            {/* <div className="mt-4 pt-4 border-t border-border">
-              <span className="text-sm font-medium text-foreground">
-                {stall.discount}
-              </span>
-            </div> */}
           </div>
 
           <div className="flex-1 p-5 m-5">
             <Button
-                variant={"outline"}
-                size={"icon"}
-                className={cn(
-                  "absolute h-8 w-8 rounded-full",
-                  
-                )}
-                onClick={()=>{
-
-                }}
-                // {...props}
-              >
-                Menu
-              </Button>
+              variant={"outline"}
+              size={"icon"}
+              className={cn(
+                "absolute h-8 w-8 rounded-full",
+              )}
+              onClick={() => onMenuClick(stall.id)}
+            >
+              Menu
+            </Button>
           </div>
         </div>
       {/* </CardContent> */}
