@@ -78,3 +78,16 @@ create table if not exists payments(
 	 created_at timestamp without time zone default current_timestamp,
 	 updated_at timestamp default now()
 )
+
+
+
+-- USERS -- 
+
+Create type user_roles as Enum('USER', 'MANAGER', 'ADMIN');
+CREATE TABLE users(
+	id UUID primary key,
+	email varchar(255),
+	password_hash text,
+	user_role user_roles,
+	created_at timestamp default CURRENT_TIMESTAMP
+)

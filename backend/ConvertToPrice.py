@@ -12,8 +12,8 @@ def valid_prices(price_list):
     # print(len('1,3,2,5'), "stringlen")
     return ','.join(str(nums) for nums in number_price_lists)
     
-result = valid_prices(["10", "20", "70", 100])
-# print(result)
+result = valid_prices(["10", "20", "70", "free", 100])
+print(result)
 
 
 print("hello".find("e"))

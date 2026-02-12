@@ -1,4 +1,4 @@
-function StepTwo({ ref, next, prev }) {
+function StepTwo({ ref, next, prev }:any) {
   return (
     <div>
         <input

@@ -1,5 +1,5 @@
 
-function StepOne({ ref, next }) {
+function StepOne({ ref, next }:any) {
     return (
         <div>
             <input

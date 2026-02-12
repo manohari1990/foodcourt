@@ -1,9 +1,12 @@
-import React, {useState, useEffect, useMemo} from 'react'
+import {useState, useEffect, useMemo} from 'react'
 
 
 function UserSearch() {
 
+    const ITEMS_PER_PAGE = 10
+
     const [postList, setPostList] = useState([])
+    const [currentPage, setCurrentPage] = useState(1)
     const [query, setQuery] = useState('')
     const [debounceQuery, setDebounceQuery] = useState('')
 
@@ -22,6 +25,10 @@ function UserSearch() {
     },[])
 
     useEffect(()=>{
+        setCurrentPage(1)
+    },[debounceQuery])
+
+    useEffect(()=>{
         const timerID = setTimeout(()=>{
             setDebounceQuery(query)
         },500)
@@ -36,8 +43,15 @@ function UserSearch() {
         return postList.filter((post:any)=>
             post.title.toLowerCase().includes(debounceQuery.toLowerCase())
         )
-    }, [debounceQuery])
+    }, [debounceQuery, postList])
 
+    const paginationPost =useMemo(()=>{
+        const startIndex = (currentPage-1) * ITEMS_PER_PAGE
+        const endIndex = startIndex + ITEMS_PER_PAGE
+        return searchPosts.slice(startIndex, endIndex)
+    },[searchPosts, currentPage])
+
+    const totalPages = Math.ceil(searchPosts.length / ITEMS_PER_PAGE)
 
     return (
         <>
@@ -50,9 +64,9 @@ function UserSearch() {
 
             />
             {
-                searchPosts && searchPosts.length >0 &&
+                paginationPost && paginationPost.length >0 &&
                 <ul>
-                    {searchPosts.map((item:any)=>{
+                    {paginationPost.map((item:any)=>{
                         return(
                             <li key={item.id}>
                                 {item.title}
@@ -61,6 +75,26 @@ function UserSearch() {
                     })}
                 </ul>
             }
+
+            <div style={{ marginTop: '10px' }}>
+                <button
+                    disabled={currentPage === 1}
+                    onClick={() => setCurrentPage((p) => p - 1)}
+                >
+                    Prev
+                </button>
+
+                <span style={{ margin: '0 10px' }}>
+                    Page {currentPage} of {totalPages}
+                </span>
+
+                <button
+                    disabled={currentPage === totalPages || totalPages < 1}
+                    onClick={() => setCurrentPage((p) => p + 1)}
+                >
+                    Next
+                </button>
+            </div>
         </>
     )
 

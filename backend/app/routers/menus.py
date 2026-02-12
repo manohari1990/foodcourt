@@ -32,6 +32,7 @@ def list_menu_by_stallid(
         "status_code": HTTPStatus.OK if len(menu_items) > 1 else HTTPStatus.NO_CONTENT,
         "message": 'Menu listsed successfully' if len(menu_items) > 1 else 'No records found',
         "data": menu_items,
+        'next_offset': offset + limit if len(menu_items) == limit else None,
         "pagination":{
             "total": total,
             "limit": limit,

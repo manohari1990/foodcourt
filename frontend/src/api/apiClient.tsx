@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const baseUrl = 'http://localhost:8000'
+export const baseUrl = 'http://localhost:8000'// import.meta.env.VITE_API_URL
 export const headers = {"Content-Type": "application/json"}
 
 /************************* FETCH *****************************

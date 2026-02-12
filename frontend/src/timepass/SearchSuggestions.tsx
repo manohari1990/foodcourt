@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+// import { useEffect, useMemo, useState } from "react";
 import { useDebouceSearch } from "./hooks/DebouceSearch";
 
 
@@ -44,7 +44,7 @@ function SearchSuggestions(){
             {isSearching && <>Tinking...</>}
             {!isSearching && results.length > 0 &&
                 <ul>
-                    {results.map((item, index)=>{
+                    {results.map((item:string, index:number)=>{
                         return (
                             <li
                                 key={index}

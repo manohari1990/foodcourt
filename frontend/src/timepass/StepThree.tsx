@@ -1,4 +1,4 @@
-function StepThree({ ref, prev, handleSubmit }) {
+function StepThree({ ref, prev, handleSubmit }:any) {
 
 //   const handleSubmit = async () => {
 //     console.log("Submitting all data to server...", JSON.stringify(ref.current));

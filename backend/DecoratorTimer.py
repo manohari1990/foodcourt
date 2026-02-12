@@ -3,7 +3,7 @@ import time
 
 # Decorator function
 def timer(func):
-    @functools.wraps(func)
+    # @functools.wraps(func)
     def wrapper(*args, **kwargs):
         start_time = time.perf_counter()
         print("function exec starts")
