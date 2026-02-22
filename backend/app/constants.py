@@ -11,3 +11,8 @@ class OrderStatus(str, Enum):
     READY = "READY"
     COMPLETED = "COMPLETED"
     CANCELLED = "CANCELLED"
+    
+class UserRole(str, Enum):
+    USER = 'USER',
+    ADMIN = 'ADMIN',
+    MANAGER = 'MANAGER'

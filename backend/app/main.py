@@ -3,6 +3,7 @@ from database import engine
 from routers.stalls import router as stalls_router
 from routers.menus import router as menus_router
 from routers.orders import router as order_router
+from routers.UserLogin import router as user_router
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -20,6 +21,15 @@ app.add_middleware(
 # Schemas validate data
 # Models talk to database 
 ###############################
+
+
+app.include_router(
+    user_router,
+    prefix="/users",
+    tags=["Users"]
+)
+
+
 app.include_router(
     stalls_router,
     prefix="/stalls",
