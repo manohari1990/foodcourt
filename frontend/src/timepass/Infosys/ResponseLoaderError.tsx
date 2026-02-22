@@ -48,7 +48,7 @@ function ResponseLoaderError () {
             {
                 response && response.length > 0 &&
                 <ul>
-                    {response.map(item=>{
+                    {response.map((item:any)=>{
                         return <li>
                             {item.name} - {item.website} - {item.company.name}
                         </li>

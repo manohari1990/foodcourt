@@ -7,7 +7,7 @@ const ExpensiveList = React.memo(({data, itemClicked}:any) => {
     console.log("Child Rendering...")
     return (
         <ul>
-        {data.map(item => (
+        {data.map((item:any) => (
             <li key={item.id} onClick={() => itemClicked(item.id)}>{item.name}</li>
         ))}
         </ul>

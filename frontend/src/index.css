@@ -1,8 +1,7 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap'); */
 
 @layer base {
   :root {
@@ -45,7 +44,6 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    /* Custom food stall tokens */
     --rating: 45 100% 50%;
     --cuisine-tag: 200 80% 94%;
     --cuisine-tag-foreground: 200 80% 30%;
@@ -96,12 +94,9 @@
 }
 
 @layer base {
-  /* * {
-    @apply border-border;
-  } */
+
 
   body {
-    /* @apply bg-background text-foreground; */
     font-family: 'Plus Jakarta Sans', sans-serif;
   }
 }
@@ -110,5 +105,66 @@
 .text-card-foreground{
   width: 100%;
   display: flex;
-  /* justify-content: center; */
+} */
+
+
+html, body {
+  background-color: var(--bg-color);
+  color: var(--primary-font-color);
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+}
+.primary-button {
+  background-color: var(--primary-button-color);
+  color: var(--primary-button-text-color);
+  border: 1px solid var(--primary-button-border-color);
+  border-radius: var(--primary-button-border-radius);
+}
+.secondary-button{
+  background-color: var(--secondary-button-color);
+  color: var(--secondary-button-text-color);
+  border: 1px solid var(--secondary-button-border-color);
+  border-radius: var(--secondary-button-border-radius);
+}
+
+.primary-font {
+  color: var(--primary-font-color);
+  font-size: var(--primary-font-size);
+  font-weight: var(--primary-font-weight); 
+}
+.secondary-font {
+  color: var(--secondary-font-color);
+  font-size: var(--secondary-font-size);
+  font-weight: var(--secondary-font-weight); 
+}
+
+
+header {
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+  width: inherit;
+}
+
+
+
+section{
+    display: flex;
+    width: 100%;
+}
+
+.width-inherit{
+  width: inherit;
+}
+.full-width{
+  width: 100%;
+}
+.content{
+  text-align: center;
+  min-height: 1000px;
+}
+.footer{
+  background-color: #f1f1f1;
+  text-align: center;
 }

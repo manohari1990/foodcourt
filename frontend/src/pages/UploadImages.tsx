@@ -1,10 +1,15 @@
 import axios from 'axios'
-import {useEffect, useState} from 'react'
+import { useEffect, useState} from 'react'
 
 function UploadImages () {
 
     const [images, setImages] = useState(null)
     const [isUploading, setIsUploading] = useState(false)
+    const arr:number[] = []
+
+    useEffect(()=>{
+        console.log(arr)
+    })
 
     const handleUpload = async(e:any) =>{
         setIsUploading(true)
@@ -26,7 +31,10 @@ function UploadImages () {
 
     return (
         <div>
+            
             <input type='file' name='fileInput' onChange={handleUpload} />
+            {isUploading && <>uploading...</>}
+            {images}
         </div>
     )
 

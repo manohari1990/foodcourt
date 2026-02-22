@@ -11,14 +11,14 @@ Password minimum length: 6
 Show error messages
 Disable submit button if form is invalid */
 
-import { useState, useEffect } from 'react'
+import { useState} from 'react'
 
 function Loginform() {
     const [form, setForm] = useState({ email: '', password: '' })
-    const [formError, setFormError] = useState({})
+    const [formError, setFormError] = useState({email:'', password:''})
     const [disableSubmit, setDisableSubmit] = useState(false)
 
-    function handleChange(e) {
+    function handleChange(e:any) {
         const { name, value } = e.target
         console.log(name)
         setForm((prev) => {
@@ -26,6 +26,7 @@ function Loginform() {
         })
 
         validateInput(name, value)
+        setDisableSubmit(false)
 
     }
 
