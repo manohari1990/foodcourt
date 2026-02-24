@@ -29,13 +29,13 @@ function InsuranceClaimsPage() {
 
   // Memoized query params
   const queryString = useMemo(() => {
-    const params = new URLSearchParams({
-      page: query.page,
+    const params:any = new URLSearchParams({
+      page: (query.page).toString,
       limit: query.limit,
       sortBy: query.sortBy,
       sortOrder: query.sortOrder,
       status: query.status,
-      search: debouncedSearch
+      search: debouncedSearch,
     });
     return params.toString();
   }, [query.page, query.limit, query.sortBy, query.sortOrder, query.status, debouncedSearch]);
@@ -59,7 +59,7 @@ function InsuranceClaimsPage() {
         const data = await response.json();
         setClaims(data.items);
         setTotal(data.total);
-      } catch (err) {
+      } catch (err:any) {
         if (err.name !== "AbortError") {
           setError(err.message);
         }
@@ -74,11 +74,11 @@ function InsuranceClaimsPage() {
   }, [queryString]);
 
   // Stable handlers
-  const handlePageChange = useCallback((page) => {
+  const handlePageChange = useCallback((page:number) => {
     setQuery(prev => ({ ...prev, page }));
   }, []);
 
-  const handleSort = useCallback((sortBy) => {
+  const handleSort = useCallback((sortBy:string) => {
     setQuery(prev => ({
       ...prev,
       sortBy,
@@ -89,7 +89,7 @@ function InsuranceClaimsPage() {
     }));
   }, []);
 
-  const handleStatusFilter = useCallback((status) => {
+  const handleStatusFilter = useCallback((status:any) => {
     setQuery(prev => ({
       ...prev,
       status,
@@ -97,7 +97,7 @@ function InsuranceClaimsPage() {
     }));
   }, []);
 
-  const handleSearch = useCallback((e) => {
+  const handleSearch = useCallback((e:any) => {
     setQuery(prev => ({
       ...prev,
       search: e.target.value,

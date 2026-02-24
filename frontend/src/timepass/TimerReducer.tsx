@@ -1,11 +1,11 @@
-import React, { useReducer, useEffect, useRef } from 'react';
+import { useReducer, useEffect, useRef } from 'react';
 
 const initialState = {
   isRunning: false,
   time: 0,
 };
 
-function reducer(state, action) {
+function reducer(state: any, action:any) {
   switch (action.type) {
     case 'START':
       return { ...state, isRunning: true };
@@ -22,15 +22,16 @@ function reducer(state, action) {
 
 export default function Timer() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const timerRef = useRef(null);
+  const timerRef = useRef(undefined);
 
   useEffect(() => {
-    if (state.isRunning) {
-      timerRef.current = setInterval(() => dispatch({ type: 'TICK' }), 1000);
-    } else {
-      clearInterval(timerRef.current);
-    }
-    return () => clearInterval(timerRef.current);
+    console.log(timerRef)
+    // if (state.isRunning) {
+    //   timerRef.current = setInterval(() => dispatch({ type: 'TICK' }), 1000);
+    // } else {
+    //   clearInterval(timerRef.current);
+    // }
+    // return () => clearInterval(timerRef.current);
   }, [state.isRunning]);
 
   return (

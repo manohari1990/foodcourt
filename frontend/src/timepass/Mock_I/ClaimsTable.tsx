@@ -9,7 +9,7 @@ const ClaimsTable = React.memo(function ClaimsTable({
   onSort,
   sortBy,
   sortOrder
-}) {
+}: any) {
   const totalPages = Math.ceil(total / limit);
 
   return (

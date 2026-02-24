@@ -30,7 +30,7 @@ function SearchComponent() {
 
     // Non-urgent: Update the list in the background
     startTransition(() => {
-      const hugeList = Array.from({ length: 100 }, (_, i) => `${e.target.value} ${i}`);
+      const hugeList:any = Array.from({ length: 100 }, (_, i) => `${e.target.value} ${i}`);
       setList(hugeList);
     });
   };
