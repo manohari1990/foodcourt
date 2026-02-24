@@ -1,4 +1,3 @@
-import { BrowserRouter } from "react-router-dom"
 // // import AppRoutes from "./routes/AppRoutes"
 // import { CartProvider } from "./store/store"
 // import RetryFunctionCall from "./timepass/RetryFunctionCall"
@@ -20,7 +19,6 @@ import { BrowserRouter } from "react-router-dom"
 // import UserSearch from "./timepass/UserSearch"
 // import ProductListing from "./product-listing-module/ProductListing"
 
-import InsuranceClaimsPage from './timepass/Mock_I/InsuranceClaimsPage'
 
 /**
  * React Query manages server state by 
@@ -31,44 +29,40 @@ import InsuranceClaimsPage from './timepass/Mock_I/InsuranceClaimsPage'
  * React Query focuses on -- Data lifecycle inside React
  * React Query still needs Axios or fetch underneath
 //  */
-// import {loadSavedTheme, mountToggleTheme} from 'uni-theme-select'
-// import {useEffect} from 'react'
+import {loadSavedTheme, mountToggleTheme} from 'uni-theme-select'
+import {useEffect} from 'react'
 
 function App() {
-    // useEffect(() => {
-    //   loadSavedTheme();
-    //   mountToggleTheme({'containerId':'footer_section'})
-    // }, []);
+    useEffect(() => {
+      loadSavedTheme();
+      mountToggleTheme({'containerId':'footer_section'})
+    }, []);
 
 
-    // return (
-    //   <>
-    //   <section className="header">
-    //     <header>
-    //       <h1>My Header</h1>
-    //       <p className="primary-font">Primary Font</p>
-    //       <p className="secondary-font">Secondary Font</p>
-    //     </header>
-    //   </section>
-    //   <section className="content">
-    //     <div className="width-inherit">
-    //       <h1>My Content</h1>
-    //       <button className="primary-button">Primary Button</button>
-    //       <button className="secondary-button">Secondary Button</button>
-    //     </div>
-    //   </section>
-    //   <section className="footer" id="footer_section">
-    //     <div className="width-inherit">
-    //       <h1>My Footer</h1>
-    //     </div>
-    //   </section>
-    //   </>
-    // )
-  return (
-    <BrowserRouter>
-    <InsuranceClaimsPage />
-    </BrowserRouter>
-  )
+    return (
+      <>
+      <section className="header">
+        <header>
+          <h1>My Header</h1>
+          <p className="primary-font">Primary Font</p>
+          <p className="secondary-font">Secondary Font</p>
+        </header>
+      </section>
+      <section className="content">
+        <div className="width-inherit">
+          <h1>My Content</h1>
+          <button className="primary-button">Primary Button</button>
+          <button className="secondary-button">Secondary Button</button>
+        </div>
+      </section>
+      <section className="footer" id="footer_section">
+        <div className="width-inherit">
+          <h1>My Footer</h1>
+        </div>
+      </section>
+      </>
+    )
+ 
     // <MultiStepForm />
     // <SearchSuggestions />
     // <UserSearch />

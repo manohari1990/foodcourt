@@ -119,13 +119,13 @@ html, body {
   background-color: var(--primary-button-color);
   color: var(--primary-button-text-color);
   border: 1px solid var(--primary-button-border-color);
-  border-radius: var(--primary-button-border-radius);
+  border-radius: calc(var(--primary-button-border-radius) *1px);
 }
 .secondary-button{
   background-color: var(--secondary-button-color);
   color: var(--secondary-button-text-color);
   border: 1px solid var(--secondary-button-border-color);
-  border-radius: var(--secondary-button-border-radius);
+  border-radius: calc(var(--secondary-button-border-radius) *1px);
 }
 
 .primary-font {
