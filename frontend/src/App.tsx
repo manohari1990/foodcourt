@@ -44,7 +44,6 @@ function App() {
         <section className="header">
           <header>
             <h1>My Header</h1>
-            <h2>This is a test</h2>
             <p className="primary-font">Primary Font</p>
             <p className="secondary-font">Secondary Font</p>
           </header>
