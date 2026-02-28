@@ -1,17 +1,16 @@
-import React, {
+import {
   useEffect,
   useState,
   useCallback,
-  useMemo
 } from "react";
-import { useDebounce } from "./useDebounce";
-import ClaimsTable from "./ClaimsTable";
+// import { useDebounce } from "./useDebounce";
+// import ClaimsTable from "./ClaimsTable";
 
-const API_URL = "https://api.example.com/claims";
+// const API_URL = "https://api.example.com/claims";
 
 function InsuranceClaimsPage() {
-  const [claims, setClaims] = useState([]);
-  const [total, setTotal] = useState(0);
+  // const [claims, setClaims] = useState([]);
+  // const [total, setTotal] = useState(0);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -25,20 +24,20 @@ function InsuranceClaimsPage() {
     search: ""
   });
 
-  const debouncedSearch = useDebounce(query.search, 500);
+  // const debouncedSearch = useDebounce(query.search, 500);
 
-  // Memoized query params
-  const queryString = useMemo(() => {
-    const params:any = new URLSearchParams({
-      page: (query.page).toString,
-      limit: query.limit,
-      sortBy: query.sortBy,
-      sortOrder: query.sortOrder,
-      status: query.status,
-      search: debouncedSearch,
-    });
-    return params.toString();
-  }, [query.page, query.limit, query.sortBy, query.sortOrder, query.status, debouncedSearch]);
+  // // Memoized query params
+  // const queryString = useMemo(() => {
+  //   const params:any = new URLSearchParams({
+  //     page: (query.page).toString,
+  //     limit: query.limit,
+  //     sortBy: query.sortBy,
+  //     sortOrder: query.sortOrder,
+  //     status: query.status,
+  //     search: debouncedSearch,
+  //   });
+  //   return params.toString();
+  // }, [query.page, query.limit, query.sortBy, query.sortOrder, query.status, debouncedSearch]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -47,18 +46,19 @@ function InsuranceClaimsPage() {
       try {
         setLoading(true);
         setError(null);
+        console.log(query)
 
-        const response = await fetch(`${API_URL}?${queryString}`, {
-          signal: controller.signal
-        });
+        // const response = await fetch(`${API_URL}?${queryString}`, {
+        //   signal: controller.signal
+        // });
 
-        if (!response.ok) {
-          throw new Error("Failed to fetch claims");
-        }
+        // if (!response.ok) {
+        //   throw new Error("Failed to fetch claims");
+        // }
 
-        const data = await response.json();
-        setClaims(data.items);
-        setTotal(data.total);
+        // const data = await response.json();
+        // setClaims(data.items);
+        // setTotal(data.total);
       } catch (err:any) {
         if (err.name !== "AbortError") {
           setError(err.message);
@@ -71,23 +71,23 @@ function InsuranceClaimsPage() {
     fetchClaims();
 
     return () => controller.abort();
-  }, [queryString]);
+  }, []);
 
   // Stable handlers
-  const handlePageChange = useCallback((page:number) => {
-    setQuery(prev => ({ ...prev, page }));
-  }, []);
+  // const handlePageChange = useCallback((page:number) => {
+  //   setQuery(prev => ({ ...prev, page }));
+  // }, []);
 
-  const handleSort = useCallback((sortBy:string) => {
-    setQuery(prev => ({
-      ...prev,
-      sortBy,
-      sortOrder:
-        prev.sortBy === sortBy && prev.sortOrder === "asc"
-          ? "desc"
-          : "asc"
-    }));
-  }, []);
+  // const handleSort = useCallback((sortBy:string) => {
+  //   setQuery(prev => ({
+  //     ...prev,
+  //     sortBy,
+  //     sortOrder:
+  //       prev.sortBy === sortBy && prev.sortOrder === "asc"
+  //         ? "desc"
+  //         : "asc"
+  //   }));
+  // }, []);
 
   const handleStatusFilter = useCallback((status:any) => {
     setQuery(prev => ({
@@ -125,16 +125,16 @@ function InsuranceClaimsPage() {
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
 
-      <ClaimsTable
-        claims={claims}
-        total={total}
+      {/* <ClaimsTable
+        // claims={claims}
+        // total={total}
         page={query.page}
         limit={query.limit}
         onPageChange={handlePageChange}
         onSort={handleSort}
         sortBy={query.sortBy}
         sortOrder={query.sortOrder}
-      />
+      /> */}
     </div>
   );
 }

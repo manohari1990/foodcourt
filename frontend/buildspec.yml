@@ -11,7 +11,7 @@ phases:
       - npm run build
   post_build:
     commands:
-      - aws s3 sync build/ s3://my-react-app-prod --delete
+      - aws s3 sync build/ s3://food-court-frontend --delete
 
 artifacts:
   files:
